@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dctqkarewg0o0"]
+
+[ext_resource type="Script" uid="uid://csjwxs3d5g848" path="res://boss.gd" id="1_0bnu1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mihky"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0bnu1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mihky"]
+albedo_color = Color(0.5826597, 0.54696923, 0.99999565, 1)
+metallic = 1.0
+
+[node name="Boss" type="CharacterBody3D" unique_id=1766282112]
+script = ExtResource("1_0bnu1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=225833392]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_mihky")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1145758794]
+mesh = SubResource("BoxMesh_0bnu1")
+surface_material_override/0 = SubResource("StandardMaterial3D_mihky")
