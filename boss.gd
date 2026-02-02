@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var fall_acceleration = 75
 
 @export var player: Node3D
+@export var random_spawn_path: PathFollow3D
+@export var simple_bullet: PackedScene
 
 var target_velocity = Vector3.ZERO
 
@@ -25,3 +27,18 @@ func _physics_process(delta):
 	velocity = target_velocity
 	
 	move_and_slide()
+	
+func spawn_burst(amount: int, delay: float):
+	for i in range(amount):
+		
+		var b = simple_bullet.instantiate()
+		random_spawn_path.progress_ratio = randf()
+		
+		b.initialize(random_spawn_path.position,player.position,10,1,PI/8);
+		get_tree().root.add_child(b)
+		
+		await get_tree().create_timer(delay).timeout
+
+
+func _on_burst_timer_timeout() -> void:
+	spawn_burst(20, 0.1)

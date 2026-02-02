@@ -11,12 +11,13 @@ albedo_color = Color(1, 0.3254902, 0.3372549, 1)
 metallic = 1.0
 
 [node name="Player" type="CharacterBody3D" unique_id=939875490]
+collision_mask = 22
 script = ExtResource("1_4flbx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=82719054]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=82719054]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0, 0, 0)
 shape = SubResource("BoxShape3D_4flbx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" unique_id=823833453]
+[node name="Mesh" type="MeshInstance3D" parent="Collision" unique_id=823833453]
 mesh = SubResource("BoxMesh_sh265")
 surface_material_override/0 = SubResource("StandardMaterial3D_4flbx")
